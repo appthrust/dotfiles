@@ -19,6 +19,8 @@ set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
 starship init fish | source
 
+direnv hook fish | source
+
 function fish_greeting
     echo "Welcome to your modern fish shell with starship prompt!"
 end
