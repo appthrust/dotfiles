@@ -17,15 +17,6 @@ set -x EDITOR nvim
 set -x FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
 set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
-starship init fish | source
-direnv hook fish | source
-
-# atuin
-atuin init fish | source
-# bind to ctrl-r in normal and insert mode, add any other bindings you want here too
-bind \cr _atuin_search
-bind -M insert \cr _atuin_search
-
 function fish_greeting
     echo "Welcome to your modern fish shell with starship prompt!"
 end
@@ -33,4 +24,30 @@ end
 function fish_user_key_bindings
     # bind \cr 'history | fzf | read -l result; and commandline -- $result'
     bind \ct 'fd --type f --hidden --follow --exclude .git | fzf | read -l result; and commandline -- $result'
+end
+
+if status is-interactive
+    # bind to ctrl-r in normal and insert mode, add any other bindings you want here too
+    bind \cr _atuin_search
+    bind -M insert \cr _atuin_search
+
+    if type -q starship
+        starship init fish | source
+    end
+
+    if type -q direnv
+        direnv hook fish | source
+    end
+
+    if type -q atuin
+        atuin init fish | source
+    end
+
+    if type -q proto
+        proto completions | source
+    end
+
+    if type -q moon
+        moon completions | source
+    end
 end
