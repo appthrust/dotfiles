@@ -47,7 +47,7 @@ if status is-interactive
         proto completions | source
     end
 
-    if type -q moon
+    if type -q moon && moon --version > /dev/null 2>&1
         moon completions | source
     end
 end
