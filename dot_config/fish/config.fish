@@ -44,10 +44,10 @@ if status is-interactive
     end
 
     if type -q proto
-        proto completions | source
+        proto completions --shell fish | source
     end
 
     if type -q moon && moon --version > /dev/null 2>&1
-        moon completions | source
+        moon completions --shell fish | source
     end
 end
