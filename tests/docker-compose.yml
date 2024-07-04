@@ -4,3 +4,7 @@ services:
       context: ..
       dockerfile: tests/Dockerfile
     command: fish
+    # Enable the below to test starship look and feel for vagrant environment
+    # hostname: vagrant
+    volumes:
+      - ..:/root/.local/share/chezmoi

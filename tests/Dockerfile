@@ -7,6 +7,7 @@ ENV PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
 RUN proto --version
 RUN proto plugin add --global moon "https://raw.githubusercontent.com/moonrepo/moon/master/proto-plugin.toml"
 RUN proto install moon && cd / && moon --version
+RUN curl https://starship.rs/install.sh | sh -s -- --yes
 COPY . /root/.local/share/chezmoi
 RUN chezmoi apply
 WORKDIR /root
